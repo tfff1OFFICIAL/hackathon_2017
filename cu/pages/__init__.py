@@ -1,4 +1,4 @@
-from flask import Blueprint, r
+from flask import Blueprint
 
 use = Blueprint(
     '',
