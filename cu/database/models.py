@@ -4,7 +4,7 @@ Database models
 import bcrypt
 import base64
 import hashlib
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, Boolean
 from cu.database import Base
 
 
@@ -14,6 +14,7 @@ class User(Base):
     username = Column(String, unique=True, nullable=False)
     email = Column(String(120), unique=True, nullable=False)
     password = Column(Text, nullable=False)
+    active = Column(Boolean, nullable=False)
 
     def __init__(self, username=None, email=None, password=''):
         self.username = username
@@ -24,6 +25,7 @@ class User(Base):
             ),
             bcrypt.gensalt()
         )
+        self.active = True
 
     def verify_password(self, attempted):
         pwhash = bcrypt.hashpw(attempted, self.password)
@@ -53,6 +55,21 @@ class Organisation(Base):
 
     def verify_password(self, attempted):
         return bcrypt.checkpw(attempted, self.password)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return self.active
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
 
     def __repr__(self):
         return '<Organisation %r: %r>' % (self.id, self.name)
