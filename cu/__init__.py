@@ -1,13 +1,11 @@
 from flask import Flask
-from cu import database
+from cu import database, pages
+from cu.pages import org
 
 app = Flask(__name__)
 
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
+app.register_blueprint(pages.use)
+app.register_blueprint(org.org)
 
 if __name__ == '__main__':
     import pathlib
