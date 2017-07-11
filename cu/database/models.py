@@ -62,3 +62,27 @@ class Organisation(Base):
 
     def __init__(self, name):
         self.name = name
+
+
+class Event(Base):
+    __tablename__ = "events"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
+    active = Column(Boolean, nullable=False)
+
+    # idk how to use relationship()
+
+    def __init__(self, name, active):
+        self.name = name
+        self.active = active
+
+    def stop(self):
+        self.active = False
+
+    # can we associate users with an event? (maybe event manager can add them)
+    def associate(self):
+        pass
+
+
+
+
