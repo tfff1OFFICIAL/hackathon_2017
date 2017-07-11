@@ -1,12 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, session, request, abort, redirect, url_for, render_template
 
 org = Blueprint(
-    'org',
+    '/org',
     __name__,
-    template_folder='templates/org'
+    template_folder='templates'
 )
-
-
-@org.route('/')
-def main():
-    return '<h1>login page if not logged in, or the main page</h1>'

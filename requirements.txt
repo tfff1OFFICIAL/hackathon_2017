@@ -2,3 +2,6 @@ Flask
 SQLAlchemy
 Flask-SQLAlchemy
 bcrypt
+flask-login
+Flask-WTF
+Flask-Oauth2-login
