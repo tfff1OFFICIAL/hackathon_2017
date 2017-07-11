@@ -71,7 +71,7 @@ class Event(Base):
     active = Column(Boolean, nullable=False)
 
     # idk how to use relationship()
-    
+
     def __init__(self, name, active):
         self.name = name
         self.active = active
@@ -81,6 +81,7 @@ class Event(Base):
 
     # can we associate users with an event? (maybe event manager can add them)
     def associate(self):
+        pass
 
 
 
