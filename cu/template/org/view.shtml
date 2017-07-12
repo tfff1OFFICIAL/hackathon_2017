@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+
+{% block title %}{{ org.name }}{% endblock %}
+
+{% block main %}
+    <h1>{{ org.name }}</h1>
+    {% if org.description %}
+    <p>{{ org.description|markdown }}</p>
+    {% endif %}
+
+    <p>Manager: {{ org.manager }}</p>
+{% endblock %}

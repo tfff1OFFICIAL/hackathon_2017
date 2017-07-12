@@ -5,3 +5,4 @@ bcrypt
 flask-login
 Flask-WTF
 Flask-Oauth2-login
+Flask-Misaka

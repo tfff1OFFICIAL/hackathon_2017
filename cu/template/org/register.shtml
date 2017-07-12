@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+
+{% block title %}Register an Organisation{% endblock %}
+
+{% block main %}
+    {% from "_formhelpers.html" import render_field %}
+
+    <form method="post">
+        <dl>
+            {{ render_field(form.name) }}
+        </dl>
+        <dl>
+            {{ render_field(form.description) }} (Markdown supported)
+        </dl>
+        <p><button type="submit">Register</button></p>
+    </form>
+{% endblock %}
