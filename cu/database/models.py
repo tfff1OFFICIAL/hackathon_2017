@@ -1,22 +1,23 @@
 """
 Database models
 """
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, UnicodeText
+from sqlalchemy.orm import relationship, backref
 from cu.database import Base
+from cu import util
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     google_id = Column(String, unique=True, nullable=False)
     active = Column(Boolean, nullable=False)  # Defaults to True, can be set to False if user is banned
 
     organisation = relationship(
-        "Organisation",
-        uselist=False,
-        back_populates="manager"
+        'Organisation',
+        backref="user",
+        uselist=False
     )
 
     def __init__(self, google_id, name=None, active=True):
@@ -25,7 +26,10 @@ class User(Base):
         self.active = active
 
     def add_organisation(self, org):
-        pass
+        self.organisation = org
+
+    def rem_organisation(self):
+        self.organisation = None
 
     @property
     def is_authenticated(self):
@@ -49,16 +53,20 @@ class User(Base):
         self.active = True
 
     def __repr__(self):
-        return '<User %r: %r>' % (self.id, self.username)
+        return '<User %r: %r>' % (self.id, self.name)
 
 
 class Organisation(Base):
-    __tablename__ = "organisations"
+    __tablename__ = 'organisation'
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True, nullable=False)
+    name = Column(String, nullable=False)
+    url_name = Column(String, nullable=False)
+    description = Column(UnicodeText)
 
-    manager_id = Column(Integer, ForeignKey('users.id'))
-    manager = relationship("User", back_populates="organisation")
+    manager = Column(Integer, ForeignKey(User.id))
 
-    def __init__(self, name):
+    def __init__(self, name=None, manager=None, description=None):
         self.name = name
+        self.url_name = util.urlify_string(name)
+        self.manager = manager
+        self.description = description
