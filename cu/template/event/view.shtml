@@ -1,0 +1,27 @@
+{% extends 'page.html' %}
+
+{% block title %}Event: {{ event.title }}{% endblock %}
+
+{% block main %}
+<h1>WOAH AN EVENT!!!!!!!!!!!!!!!!!!!</h1>
+    <h2>{{ event.title }}</h2>
+    {{ event.description|markdown }}
+
+    <br/>
+    <p>{{ event.location }}</p>
+    <p>{{ event.datetime }}</p>
+    <p><a href="/org/{{ event.organisation.id }}">{{ event.organisation.name }}</a></p>
+
+    <table style="width: 100%">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+    </tr>
+    {% for user in event.followers %}
+        <tr>
+            <td>user.id</td>
+            <td><a href="/u/{{ user.id }}">user.name</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

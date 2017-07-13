@@ -37,11 +37,12 @@ Misaka(  # Markdown renderer
 )
 
 from cu import pages
-from cu.pages import org, user
+from cu.pages import org, user, event
 
 app.register_blueprint(pages.root)
 app.register_blueprint(org.org, url_prefix="/org")
 app.register_blueprint(user.u, url_prefix="/u")
+app.register_blueprint(event.e, url_prefix="/event")
 
 
 @login_manager.user_loader

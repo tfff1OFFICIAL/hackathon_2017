@@ -27,7 +27,7 @@ def register():
         return redirect("/org/%i" % current_user.organisation.id)
 
 
-@org.route("/<id>")
+@org.route("/<int:id>")
 def view_organisation(id):
     """
     View the organisation

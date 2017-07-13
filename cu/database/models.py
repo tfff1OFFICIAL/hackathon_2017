@@ -1,16 +1,24 @@
 """
 Database models
 """
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, UnicodeText, Table
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, UnicodeText, Table, DateTime
 from sqlalchemy.orm import relationship, backref
 from cu.database import Base
 from cu import util
 
-
+# So users can follow organisations
 user_org_follow_table = Table(
     'user_org_follow',
     Base.metadata,
     Column('organisation_id', Integer, ForeignKey('organisation.id')),
+    Column('user_id', Integer, ForeignKey('user.id'))
+)
+
+# So users can follow events
+user_event_follow_table = Table(
+    'user_event_follow',
+    Base.metadata,
+    Column('event_id', Integer, ForeignKey('event.id')),
     Column('user_id', Integer, ForeignKey('user.id'))
 )
 
@@ -28,9 +36,15 @@ class User(Base):
         uselist=False
     )
 
-    following = relationship(
+    organisations_following = relationship(
         'Organisation',
         secondary=user_org_follow_table,
+        back_populates='followers'
+    )
+
+    events_following = relationship(
+        'Event',
+        secondary=user_event_follow_table,
         back_populates='followers'
     )
 
@@ -69,13 +83,19 @@ class User(Base):
     def unban(self):
         self.active = True
 
-    def follow(self, org):
-        self.following.append(org)
+    def follow_organisation(self, org):
+        self.organisations_following.append(org)
 
-    def unfollow(self, org):
-        self.following.remove(org)
+    def unfollow_organisation(self, org):
+        self.organisations_following.remove(org)
 
-    def transfer_manager(self, new_manager):
+    def follow_event(self, event):
+        self.events_following.append(event)
+
+    def unfollow_event(self, event):
+        self.events_following.remove(event)
+
+    def transfer_organisation(self, new_manager):
         """
         Transfers the managership of this organisation to a different User
         :param new_manager: User
@@ -102,8 +122,10 @@ class Organisation(Base):
     followers = relationship(
         'User',
         secondary=user_org_follow_table,
-        back_populates='following'
+        back_populates='organisations_following'
     )
+
+    events = relationship('Event', back_populates='organisation')
 
     # Social Links
     facebook = Column(String)
@@ -144,8 +166,32 @@ class Organisation(Base):
     def rem_follower(self, u):
         self.followers.remove(u)
 
+    def add_event(self, e):
+        self.events.append(e)
+
+    def rem_event(self, e):
+        self.events.remove(e)
+
 
 class Event(Base):
     __tablename__ = 'event'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    datetime = Column(DateTime, nullable=False)
+    location = Column(String, nullable=False)
+    description = Column(UnicodeText)
+
+    organisation_id = Column(Integer, ForeignKey('organisation.id'))
+    organisation = relationship('Organisation', back_populates='events')
+
+    followers = relationship(
+        'User',
+        secondary=user_event_follow_table,
+        back_populates='events_following'
+    )
+
+    def __init__(self, title, datetime, location, decription=None):
+        self.title = title
+        self.datetime = datetime
+        self.location = location
+        self.description = decription
