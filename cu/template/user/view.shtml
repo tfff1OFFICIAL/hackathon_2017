@@ -1,0 +1,9 @@
+{% extends 'page.html' %}
+
+{% block title %}u/{{ user.id }}{% endblock %}
+
+{% block main %}
+
+    <h1>{{ user.name }}</h1>
+
+{% endblock %}

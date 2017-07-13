@@ -6,8 +6,6 @@ from flask_oauth2_login import GoogleLogin
 from flask_misaka import Misaka
 from cu import database as db
 from cu.database.models import User
-from cu import pages
-from cu.pages import org, user
 
 app = Flask(
     __name__,
@@ -25,10 +23,6 @@ for config in (
 ):
     app.config[config] = os.environ[config]
 
-app.register_blueprint(pages.root)
-app.register_blueprint(org.org, url_prefix="/org")
-app.register_blueprint(user.u, url_prefix="/user")
-
 login_manager = LoginManager(app)
 googlelogin = GoogleLogin(app)
 
@@ -41,6 +35,14 @@ Misaka(  # Markdown renderer
     tables=True,
     superscript=True
 )
+
+from cu import pages
+from cu.pages import org, user
+
+app.register_blueprint(pages.root)
+app.register_blueprint(org.org, url_prefix="/org")
+app.register_blueprint(user.u, url_prefix="/u")
+
 
 @login_manager.user_loader
 def load_user(user_id):
