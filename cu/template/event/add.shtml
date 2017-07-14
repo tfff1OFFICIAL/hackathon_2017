@@ -1,0 +1,17 @@
+{% extends 'page.html' %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+<h1>Add an event</h1>
+{% from "_formhelpers.html" import render_field %}
+    <form method="post">
+    <dl>
+        {{ render_field(form.title) }}
+        {{ render_field(form.datetime) }}
+        {{ render_field(form.location) }}
+        {{ render_field(form.description) }}
+    </dl>
+    <p><button type="submit">Register</button></p>
+    </form>
+{% endblock %}

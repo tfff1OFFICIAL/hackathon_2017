@@ -25,7 +25,7 @@ def index():
     return render_template('user/login.shtml', login_link=googlelogin.authorization_url())
 
 
-@u.route('/<id>')
+@u.route('/<int:id>')
 def display_user(id):
     """
     Display the user with id
@@ -42,7 +42,7 @@ def logout():
     return redirect('/logout')
 
 
-@u.route('/<id>.json', methods=['POST', 'GET'])
+@u.route('/<int:id>.json', methods=['POST', 'GET'])
 @login_required
 def api_userdata(id):
     """
@@ -63,8 +63,8 @@ def api_userdata(id):
             active=current_user.active,
             manager=True if current_user.organisation else False,
             organisation=current_user.organisation.id if current_user.organisation else None,
-            subscribed_events="TODO: list of Event ids which the user is subscribed to",
-            subscribed_organisations=current_user.following,
+            subscribed_events=current_user.events_following,
+            subscribed_organisations=current_user.organisations_following,
         ))
 
     abort(403)
