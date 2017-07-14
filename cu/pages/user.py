@@ -55,7 +55,6 @@ def api_userdata(id):
         abort(400)
 
     if current_user.id == id:  # this user can only access it's own data
-        print("going...")
         return jsonify(dict(
             google_id=current_user.google_id,
             id=current_user.id,
@@ -63,8 +62,8 @@ def api_userdata(id):
             active=current_user.active,
             manager=True if current_user.organisation else False,
             organisation=current_user.organisation.id if current_user.organisation else None,
-            subscribed_events=current_user.events_following,
-            subscribed_organisations=current_user.organisations_following,
+            subscribed_events=[e.id for e in current_user.events_following],
+            subscribed_organisations=[o.id for o in current_user.organisations_following]
         ))
 
     abort(403)
