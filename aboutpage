@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        body {
+            background-image: url(https://cdn.discordapp.com/attachments/307106485366947840/335600428404310017/gradient.png)
+        }
+
+        .navbar-nav > li {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .navbar > a{
+            margin-left: 300px;
+        }
+
+        * {box-sizing:border-box}
+        body {font-family: Verdana,sans-serif;margin:0}
+        .mySlides {display:none}
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+
+        .center {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor:pointer;
+            height: 13px;
+            width: 13px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="#" class="navbar-left"><img src="https://cdn.discordapp.com/attachments/307106485366947840/335609557407498240/comunicefcropped2.png" alt=""></a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Organisation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.unicef.org.nz/donate/ways-to-give">Donate</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            <ul class="navbar-nav">
+                <li><a href="#">Sign Up</a></li>
+                <li><a style="margin-right: 400px;" href="#">Login</a></li>
+            </ul>
+        </span>
+    </div>
+</nav>
+
+<h1 style="text-align: center" class="display-3">Who is UNICEF?</h1>
+
+
+<p class="lead" style="text-align: center; margin-top: 10px" >UNICEF is an international organisation
+    that strives for the betterment of life for children around the globe. Over the last few decades,
+    they have made huge progress in affecting the the lives of children either indirectly through moving issues
+    into the agenda of policy makers, or directly through the actions of community protection  mechanisms.
+    <br>UNICEF's noble actions truly hold true to their mission statement, which is as follows:</p>
+
+
+<div style="margin-top: 20px" class="slideshow-container">
+
+    <div class="mySlides">
+        <img class="center" src="https://www.unicef.org/sowc2014/numbers/image/slider/img_1.jpg" style="width:90%">
+        <div><blockquote style="text-align: center" class="blockquote">UNICEF is mandated by the United Nations General Assembly to advocate for the protection of children's rights,
+            to help meet their basic needs and to expand their opportunities to reach their full potential.</blockquote></div>
+    </div>
+
+    <div class="mySlides">
+        <img class="center" src="https://downloads.unicef.org.uk/wp-content/uploads/2010/08/school-classroom-iraq-donate-1500x825.jpg" style="width:90%">
+        <div><blockquote style="text-align: center" class="blockquote">UNICEF is guided by the Convention on the Rights of the Child and strives to establish children's rights as
+            enduring ethical principles and international standards of behaviour towards children.</blockquote></div>
+    </div>
+
+    <div class="mySlides">
+        <img class="center" src="https://inspiredad-wpengine.netdna-ssl.com/wp-content/uploads/2015/07/UNI111957.jpeg" style="width:90%">
+        <div><blockquote style="text-align: center" class="blockquote">UNICEF insists that the survival, protection and development of children are universal development imperatives
+            that are integral to human progress.</blockquote></div>
+    </div>
+
+    <div class="mySlides">
+        <img class="center" src="https://www.unicef.org/sites/default/files/photo/component/take_action/take-action-optimized.jpg" style="width:90%">
+        <div><blockquote style="text-align: center" class="blockquote">UNICEF mobilizes political will and material resources to help countries, particularly developing countries,
+            ensure a "first call for children" and to build their capacity to form appropriate policies and deliver services
+            for children and their families.</blockquote></div>
+    </div>
+
+    <div class="mySlides">
+        <img class="center" src="http://www.un.org/News/dh/photos/large/2016/June/06-07-2016Burundi.jpg" style="width:90%">
+        <div><blockquote style="text-align: center" class="blockquote">UNICEF is non-partisan and its cooperation is free of discrimination. In everything it does, the most disadvantaged
+            children and the countries in greatest need have priority.</blockquote></div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+</div>
+
+<h1 style="text-align: center; margin-top: 180px;" class="display-3">Aim of comUNICEF</h1>
+<p style="text-align: center" class="lead">This website was made during the 2017 Auckland University of Technology Hackathon, which was backed by UNICEF. The brief for the competition was to create an application, it being an app, game, website, or anything else that might aid UNICEF in any way. The participants were students from year 11 to 13, in groups of 4. We had 6 days to create this application during the Term 2 school holidays. Thanks to those who helped to host this event at AUT, and to UNICEF for supporting the event.
+    <br>We opted for a website because we felt that it was by far the best medium for communication between people. We believe that one of the best things programming can bring to any group like UNICEF, with difficult and ongoing goals, is the creation of an easily accessible social environment that allows for the development of ideas, goals, and initiatives. This competition has taught us a lot about how much computer science can affect seemingly unrelated fields.
+    <br>In the future, we would like to see this website used to it's fullest potential by schools, community groups, and organisations in order to raise awareness and to be proactive about UNICEF's mission. </p>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+
+
+
+
+</body>
+</html>
