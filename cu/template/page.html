@@ -11,23 +11,36 @@
 </head>
 <body>
     
-    <!-- Navigation Bar, Static -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-
-            <ul class="nav navbar-nav">
-                <a href="#" class="navbar-left"><img src="https://cdn.discordapp.com/attachments/307106485366947840/334969728215023616/logounicefcropped.png"></a>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Organisation</a></li>
-                <li><a href="#">Donate</a></li>
-
+    <!-- Bootstrap 4 Navigation Bar, Static -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="navbar-left"><img src="https://cdn.discordapp.com/attachments/307106485366947840/335609557407498240/comunicefcropped2.png" alt=""></a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Organisation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a style="margin-right: 400px;" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
+            <span class="navbar-text">
+        <ul class="navbar-nav">
+            <li><a href="#">Sign Up</a></li>
+            <li><a style="margin-right: 400px;" href="#">Login</a></li>
+        </ul>
+    </span>
         </div>
     </nav>
 
