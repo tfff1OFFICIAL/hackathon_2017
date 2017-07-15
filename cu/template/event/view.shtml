@@ -19,8 +19,8 @@
     </tr>
     {% for user in event.followers %}
         <tr>
-            <td>user.id</td>
-            <td><a href="/u/{{ user.id }}">user.name</a></td>
+            <td>{{ user.id }}</td>
+            <td><a href="/u/{{ user.id }}">{{ user.name }}</a></td>
         </tr>
     {% endfor %}
     </table>

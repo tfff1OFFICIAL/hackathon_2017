@@ -1,6 +1,7 @@
 """
 Event view functions
 """
+import math
 from flask import Blueprint, abort, redirect, render_template, request, jsonify
 from flask_login import current_user, login_required
 from cu import event
@@ -59,9 +60,9 @@ def add_follower(id):
     """
     try:
         current_user.follow_event(event.get(id))
+        event.commit_changes()
     except ValueError:
         abort(404)
-
 
 
 @e.route('/<int:id>.json')
@@ -82,10 +83,53 @@ def api_eventdata(id):
     ))
 
 
+def get_event_section(events, page=1, page_length=20):
+    """
+    Gets a list of events
+    :param page: int
+    :param page_length: int
+    :return: list<Event>
+    """
+    start_index = (page - 1) * page_length
+    end_index = page * page_length - 1
+
+    if start_index < len(events):
+        if end_index < len(events):
+            return events[start_index:end_index+1]
+        else:
+            return events[start_index:]
+    else:
+        raise ValueError('There are no more events')
+
+
 @e.route('.json')
 def api_eventlist():
-    page = request.args.get('page')
-    if page is None:
+    try:
+        page = int(request.args.get('page'))
+    except TypeError:
         page = 1
 
-    print(event.list_events())
+    try:
+        page_len = int(request.args.get('length'))
+    except TypeError:
+        page_len = 20
+
+    
+    full_events = event.list_events()
+
+    events = []
+    try:
+        events = get_event_section(
+            full_events,
+            page=page,
+            page_length=page_len
+        )
+    except ValueError:
+        pass
+
+    return jsonify(dict(
+        event_count=len(events),
+        events=events,
+        page=page,
+        total_pages=math.ceil(len(full_events) / page_len)
+    ))

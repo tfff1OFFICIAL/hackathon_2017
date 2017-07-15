@@ -44,5 +44,14 @@ def get(id):
 
     return e
 
+
 def list_events():
-    events = Event.query.filter(Event.datetime >=datetime.now()).order_by(Event.datetime.asc())
+    print(datetime.now())
+    events = db_session.query(Event.id).filter(Event.datetime >= datetime.now()).order_by(Event.datetime.asc())
+    #events = Event.query.filter(Event.datetime >= datetime.now()).order_by(Event.datetime.asc())
+
+    return events.all()
+
+
+def commit_changes():
+    db_session.commit()
