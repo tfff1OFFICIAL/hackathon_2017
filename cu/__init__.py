@@ -3,7 +3,7 @@ import os
 from flask import Flask, session, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user
 from flask_oauth2_login import GoogleLogin
-from flask_misaka import Misaka
+# from flask_misaka import Misaka
 from cu import database as db
 from cu.database.models import User
 
@@ -25,7 +25,7 @@ for config in (
 
 login_manager = LoginManager(app)
 googlelogin = GoogleLogin(app)
-
+"""
 Misaka(  # Markdown renderer
     app,
     autolink=True,
@@ -35,7 +35,7 @@ Misaka(  # Markdown renderer
     tables=True,
     superscript=True
 )
-
+"""
 from cu import pages
 from cu.pages import org, user, event
 
