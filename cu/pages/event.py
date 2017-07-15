@@ -62,7 +62,20 @@ def add_follower(id):
         current_user.follow_event(event.get(id))
         event.commit_changes()
     except ValueError:
-        abort(404)
+        abort(400)
+
+@e.route('/<int:id>/unfollow', methods=['POST', 'GET'])
+@login_required
+def rem_follower(id):
+    """
+    Removes the current user as a follower of event id
+    :param id: int, the id of the current event
+    """
+    try:
+        current_user.unfollow_event(event.get(id))
+        event.commit_changes()
+    except ValueError:
+        abort(400)
 
 
 @e.route('/<int:id>.json')
@@ -79,7 +92,8 @@ def api_eventdata(id):
         datetime=e.datetime,
         description=e.description,
         followers=[follower.id for follower in e.followers],
-        organisation=e.organisation.id
+        organisation=e.organisation.id,
+        user_following=True if current_user in e.followers else False
     ))
 
 

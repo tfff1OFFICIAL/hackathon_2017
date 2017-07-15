@@ -2,7 +2,7 @@
 Users information
 """
 from flask import Blueprint, redirect, render_template, jsonify, abort
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, user_logged_in
 from cu import googlelogin, user
 
 
@@ -24,6 +24,18 @@ def index():
 
     return render_template('user/login.shtml', login_link=googlelogin.authorization_url())
 
+@u.route('.json')
+def api_quick_userdata():
+    if user_logged_in:
+        return jsonify(dict(
+            user_signed_in=True,
+            user_id=current_user.id
+        ))
+    else:
+        return jsonify(dict(
+            user_signed_in=False,
+            user_id=None
+        ))
 
 @u.route('/<int:id>')
 def display_user(id):
