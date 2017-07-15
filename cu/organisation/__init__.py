@@ -36,3 +36,6 @@ def get(id):
         raise ValueError("An organisation by that id doesn't exist")
 
     return o
+
+def commit_changes():
+    db_session.commit()
