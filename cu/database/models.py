@@ -196,8 +196,8 @@ class Event(Base):
         back_populates='events_following'
     )
 
-    def __init__(self, title, datetime, location, decription=None):
+    def __init__(self, title, datetime, location, description=None):
         self.title = title
         self.datetime = datetime
         self.location = location
-        self.description = decription
+        self.description = description

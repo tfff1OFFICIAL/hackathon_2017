@@ -1,27 +1,56 @@
-{% extends 'page.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.event {
+    background-color: black;
+    color: white;
+    margin: 20px 0 20px 0;
+    padding: 20px;
+}
+</style>
+</head>
+<aside id="left"></aside>
+<aside id="right"></aside>
+<body>
 
-{% block title %}Event: {{ event.title }}{% endblock %}
+<div class="event">
+<h2 id="name">NZ</h2>
+<p id="organization">organization: </p>
+<p id="where">where: </p>
+</div>
 
-{% block main %}
-<h1>WOAH AN EVENT!!!!!!!!!!!!!!!!!!!</h1>
-    <h2>{{ event.title }}</h2>
-    {{ event.description|markdown }}
 
-    <br/>
-    <p>{{ event.location }}</p>
-    <p>{{ event.datetime }}</p>
-    <p><a href="/org/{{ event.organisation.id }}">{{ event.organisation.name }}</a></p>
+</body>
+<footer id="footie"></footer>
 
-    <table style="width: 100%">
-    <tr>
-        <th>id</th>
-        <th>name</th>
-    </tr>
-    {% for user in event.followers %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td><a href="/u/{{ user.id }}">{{ user.name }}</a></td>
-        </tr>
-    {% endfor %}
-    </table>
-{% endblock %}
+<script>
+a = "<div class="event"><h2 id="name"></h2><p id="organization">organization: </p><p id="where">where: </p></div>"
+function GetEventStuffs(ID) {
+    var x = JSON.parse($.get(ID+".json").html());
+
+    return [x.title, x.organisation, x.location];
+}
+function ShowEventStuffs(ID) {
+    document.body.innerHTML += a;
+    var info = GetEventStuffs(ID);
+    var event_name = info[0]
+    var organization = info[1]
+    var where = info[2]
+    document.getElementById("event_name").innerHTML = event_name;
+    document.getElementById("organization").innerHTML += organization;
+    document.getElementById("where").innerHTML += where;
+    document.getElementById('event_name').id = '';
+    document.getElementById('organization').id = '';
+    document.getElementById('where').id = '';
+}
+var p = JSON.parse($.get("/event.json").html());
+for (var key in p.events) {
+  if (events.hasOwnProperty(key)) {
+    ShowEventStuffs(events[key][0]);
+  }
+}
+
+</script>
+
+</html>

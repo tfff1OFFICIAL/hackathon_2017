@@ -44,7 +44,7 @@ def display_user(id):
     :param id: int
     """
     try:
-        return render_template('user/view.shtml', user=user.get(id))
+        return render_template('/user/view.shtml', user=user.get(id))
     except ValueError:
         abort(404)
 

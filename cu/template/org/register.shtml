@@ -10,7 +10,7 @@
             {{ render_field(form.name) }}
         </dl>
         <dl>
-            {{ render_field(form.description) }} (Markdown supported)
+            {{ render_field(form.description) }}
         </dl>
         <p><button type="submit">Register</button></p>
     </form>
