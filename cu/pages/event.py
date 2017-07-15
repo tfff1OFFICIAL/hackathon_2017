@@ -114,7 +114,12 @@ def api_eventlist():
     except TypeError:
         page_len = 20
 
-    
+    try:
+        organisation_id = int(request.args.get('org'))
+    except TypeError:
+        organisation_id = None
+
+
     full_events = event.list_events()
 
     events = []

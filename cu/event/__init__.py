@@ -45,10 +45,30 @@ def get(id):
     return e
 
 
-def list_events():
-    print(datetime.now())
-    events = db_session.query(Event.id).filter(Event.datetime >= datetime.now()).order_by(Event.datetime.asc())
-    #events = Event.query.filter(Event.datetime >= datetime.now()).order_by(Event.datetime.asc())
+def list_events(org=None):
+    if org is None:
+        events = db_session.query(Event.id)\
+            .filter(Event.datetime >= datetime.now())\
+            .order_by(Event.datetime.asc())
+    else:
+        events = db_session.query(Event.id) \
+            .filter(Event.datetime >= datetime.now()) \
+            .filter(Event.organisation.id == org) \
+            .order_by(Event.datetime.asc())
+
+    return events.all()
+
+
+def list_past_events(org=None):
+    if org is None:
+        events = db_session.query(Event.id)\
+            .filter(Event.datetime < datetime.now())\
+            .order_by(Event.datetime.asc())
+    else:
+        events = db_session.query(Event.id)\
+            .filter(Event.datetime < datetime.now())\
+            .filter(Event.organisation.id == org)\
+            .order_by(Event.datetime.asc())
 
     return events.all()
 
