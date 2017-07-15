@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>comUNICEF</title>
+    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        background-image: url(https://cdn.discordapp.com/attachments/307106485366947840/335600428404310017/gradient.png)
+    }
+
+    .navbar-nav > li {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .navbar > a{
+        margin-left: 300px;
+    }
+
+    .logo {
+        display: block;
+        margin: 0 auto;
+        margin-top: 225px;
+    }
+
+
+</style>
+
+<body>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="navbar-left"><img src="https://cdn.discordapp.com/attachments/307106485366947840/335609557407498240/comunicefcropped2.png" alt=""></a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Organisation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.unicef.org.nz/donate/ways-to-give">Donate</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            <ul class="navbar-nav">
+                <li><a href="#">Sign Up</a></li>
+                <li><a style="margin-right: 400px;" href="#">Login</a></li>
+            </ul>
+        </span>
+        </div>
+    </nav>
+
+
+    <img class="logo" src="https://cdn.discordapp.com/attachments/307106485366947840/335285357249691649/comunicefcropped.png" alt="">
+    <h2 style="text-align: center;">Event Planner / Tracker for UNICEF Youth for Change</h2>
+
+
+    <!-- Event Feed, 6 Event Cards -->
+    <h1 style="text-align: center; margin-top: 225px"><b>Event Feed</b></h1>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-block">
+                    <h4 class="card-title"><b>-Event Title-</b></h4>
+                    <p class="card-text"><b>When: </b>16th july</p>
+                    <p class="card-text"><b>Where: </b>albert street</p>
+                    <p class="card-text"><b>Organised by: </b>hackathon</p>
+                    <a href="#" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
