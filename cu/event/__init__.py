@@ -53,7 +53,7 @@ def list_events(org=None):
     else:
         events = db_session.query(Event.id) \
             .filter(Event.datetime >= datetime.now()) \
-            .filter(Event.organisation.id == org) \
+            .filter(Event.organisation_id == org) \
             .order_by(Event.datetime.asc())
 
     return events.all()
@@ -67,7 +67,7 @@ def list_past_events(org=None):
     else:
         events = db_session.query(Event.id)\
             .filter(Event.datetime < datetime.now())\
-            .filter(Event.organisation.id == org)\
+            .filter(Event.organisation_id == org)\
             .order_by(Event.datetime.asc())
 
     return events.all()

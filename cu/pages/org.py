@@ -1,4 +1,4 @@
-from flask import Blueprint, session, request, abort, redirect, url_for, render_template
+from flask import Blueprint, session, request, abort, redirect, render_template, jsonify
 from flask_login import current_user, login_required
 from cu import organisation
 
@@ -39,3 +39,28 @@ def view_organisation(id):
         abort(404)
     else:
         return render_template('org/view.shtml', org=o)
+
+
+@org.route('/<int:id>.json')
+def api_orgdata(id):
+    try:
+        o = organisation.get(id)
+    except ValueError:
+        abort(404)
+
+    return jsonify(dict(
+        id=o.id,
+        name=o.name,
+        url_name=o.url_name,
+        description=o.description,
+        manager=o.manager,
+        followers=[follower.id for follower in o.followers],
+        events=[event.id for event in o.events],
+        social=dict(
+            facebook=o.facebook,
+            twitter=o.twitter,
+            youtube=o.youtube,
+            website=o.website,
+            email=o.email
+        )
+    ))
