@@ -114,8 +114,15 @@ def api_eventlist():
     except TypeError:
         page_len = 20
 
-    
-    full_events = event.list_events()
+    try:
+        past = bool(request.args.get('past'))
+    except TypeError:
+        past = False
+
+    if not past:
+        full_events = event.list_events()
+    else:
+        full_events = event.list_past_events()
 
     events = []
     try:
