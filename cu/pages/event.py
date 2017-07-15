@@ -120,7 +120,6 @@ def api_eventlist():
         organisation_id = None
 
 
-    full_events = event.list_events()
 
     events = []
     try:
