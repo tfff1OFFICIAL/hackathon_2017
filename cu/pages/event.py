@@ -113,16 +113,21 @@ def api_eventlist():
         page_len = int(request.args.get('length'))
     except TypeError:
         page_len = 20
-
+    
+    try:
+        organisation_id = int(request.args.get('org'))
+    except TypeError:
+        organisation_id = None
+    
     try:
         past = bool(request.args.get('past'))
     except TypeError:
         past = False
 
     if not past:
-        full_events = event.list_events()
+        full_events = event.list_events(organisation_id)
     else:
-        full_events = event.list_past_events()
+        full_events = event.list_past_events(organisation_id)
 
     events = []
     try:
