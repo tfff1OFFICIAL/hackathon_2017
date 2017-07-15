@@ -84,16 +84,20 @@ class User(Base):
         self.active = True
 
     def follow_organisation(self, org):
-        self.organisations_following.append(org)
+        if org not in self.organisations_following:
+            self.organisations_following.append(org)
 
     def unfollow_organisation(self, org):
-        self.organisations_following.remove(org)
+        if org in self.organisations_following:
+            self.organisations_following.remove(org)
 
     def follow_event(self, event):
-        self.events_following.append(event)
+        if event not in self.events_following:
+            self.events_following.append(event)
 
     def unfollow_event(self, event):
-        self.events_following.remove(event)
+        if event in self.events_following:
+            self.events_following.remove(event)
 
     def transfer_organisation(self, new_manager):
         """
@@ -161,10 +165,12 @@ class Organisation(Base):
         self.email = email
 
     def add_follower(self, u):
-        self.followers.append(u)
+        if u not in self.followers:
+            self.followers.append(u)
 
     def rem_follower(self, u):
-        self.followers.remove(u)
+        if u in self.followers:
+            self.followers.remove(u)
 
     def add_event(self, e):
         self.events.append(e)

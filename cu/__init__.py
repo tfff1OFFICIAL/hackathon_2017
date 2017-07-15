@@ -91,4 +91,4 @@ if __name__ == '__main__':
     if not pathlib.Path("data.db").is_file():
         db.init_db()
 
-    app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True)

@@ -1,7 +1,7 @@
 """
 Event view functions
 """
-from flask import Blueprint, abort, redirect, render_template, request
+from flask import Blueprint, abort, redirect, render_template, request, jsonify
 from flask_login import current_user, login_required
 from cu import event
 from .form import CreateEventForm
@@ -50,7 +50,7 @@ def add_event():
         abort(403)
 
 
-@e.route('/<int:id>/follow', methods=['POST'])
+@e.route('/<int:id>/follow', methods=['POST', 'GET'])
 @login_required
 def add_follower(id):
     """
@@ -61,3 +61,21 @@ def add_follower(id):
         current_user.follow_event(event.get(id))
     except ValueError:
         abort(404)
+
+
+@e.route('/<int:id>.json')
+def api_eventdata(id):
+    try:
+        e = event.get(id)
+    except ValueError:
+        abort(404)
+
+    return jsonify(dict(
+        id=e.id,
+        title=e.title,
+        location=e.location,
+        datetime=e.datetime,
+        description=e.description,
+        followers=[follower.id for follower in e.followers],
+        organisation=e.organisation.id
+    ))
