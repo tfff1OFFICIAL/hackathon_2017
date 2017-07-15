@@ -1,6 +1,7 @@
 """
 Interface between the app and the database for events
 """
+from datetime import datetime
 from cu.database import db_session
 from cu.database.models import Event
 
@@ -42,3 +43,6 @@ def get(id):
         raise ValueError("An event by that id doesn't exist")
 
     return e
+
+def list_events():
+    events = Event.query.filter(Event.datetime >=datetime.now()).order_by(Event.datetime.asc())
