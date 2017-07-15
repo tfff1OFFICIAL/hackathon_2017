@@ -63,6 +63,7 @@ def add_follower(id):
         abort(404)
 
 
+
 @e.route('/<int:id>.json')
 def api_eventdata(id):
     try:
@@ -79,3 +80,12 @@ def api_eventdata(id):
         followers=[follower.id for follower in e.followers],
         organisation=e.organisation.id
     ))
+
+
+@e.route('.json')
+def api_eventlist():
+    page = request.args.get('page')
+    if page is None:
+        page = 1
+
+    print(event.list_events())
